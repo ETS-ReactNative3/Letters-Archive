@@ -15,7 +15,7 @@ function Welcome({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>unsent letters archive 💌</Text>
+      <Text style={styles.header}>unsaid feelings</Text>
       <View style={styles.buttonsWrapper}>
         <Pressable
           style={styles.startButton}
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     flex: 1,
     justifyContent: "center",
-    paddingBottom: 100,
+    paddingBottom: 150,
   },
   header: {
     color: "#fff",
     fontFamily: "NeonFuture",
-    fontSize: 36,
-    lineHeight: 80,
+    fontSize: 60,
+    lineHeight: 90,
     textShadowColor: "rgba(255, 100, 200, 1)",
     textShadowOffset: { width: 3, height: 5 },
     textShadowRadius: 1,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   startText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 16,
     fontFamily: "JMHTypewriter",
   },
   startButton: {
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginTop: 25,
-    width: 112,
+    width: 105,
   },
   buttonsWrapper: {
     display: "flex",

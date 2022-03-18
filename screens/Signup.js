@@ -1,8 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Input } from "react-native-elements";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const auth = getAuth();
 
@@ -12,6 +16,7 @@ function Signup({ navigation }) {
     password: "",
     error: "",
   });
+  const [name, setName] = React.useState("");
 
   async function signUpFields() {
     if (value.email === "" || value.password === "") {
@@ -24,6 +29,9 @@ function Signup({ navigation }) {
 
     try {
       await createUserWithEmailAndPassword(auth, value.email, value.password);
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
       navigation.navigate("Login");
     } catch (error) {
       setValue({
@@ -35,8 +43,16 @@ function Signup({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Sign Up 💌</Text>
+      <Text style={styles.header}>Sign Up ♡</Text>
       <View style={styles.form}>
+        <Input
+          placeholder="enter your username"
+          containerStyle={styles.control}
+          inputStyle={styles.controlText}
+          onChangeText={(text) => setName(text)}
+          leftIcon={<Icon name="user-circle" size={16} color="#fff" />}
+        />
+
         <Input
           placeholder="enter your email"
           containerStyle={styles.control}
@@ -56,7 +72,7 @@ function Signup({ navigation }) {
           leftIcon={<Icon name="key" size={16} color="#fff" />}
         />
 
-        {!!value.error && (
+        {value.error && (
           <View>
             <Text style={styles.error}>{value.error}</Text>
           </View>
@@ -89,7 +105,7 @@ const styles = StyleSheet.create({
   },
   startText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 16,
     fontFamily: "JMHTypewriter",
   },
   startButton: {
@@ -101,7 +117,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginTop: 20,
-    width: 112,
+    width: 105,
   },
   buttonsWrapper: {
     display: "flex",
