@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,8 +9,19 @@ import {
 } from "react-native";
 import { Input } from "react-native-elements";
 import { useAuthentication } from "../utils/hooks/useAuth";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 function WriteLetters() {
+  const [newPost, setNewPost] = useState("");
+  const [newRecipient, setNewRecipient] = useState("");
+  const { user } = useAuthentication();
+  const collectionRef = collection(db, "posts");
+
+  const createPost = async () => {
+    await addDoc(collectionRef, { recipiant: newRecipient, letter: newPost });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.start}>
@@ -18,6 +30,9 @@ function WriteLetters() {
           containerStyle={styles.input}
           inputStyle={styles.inputText}
           placeholder="enter a name"
+          onChangeText={(text) => {
+            setNewRecipient(text);
+          }}
         ></Input>
       </View>
       <View style={styles.textAreaContainer}>
@@ -27,9 +42,12 @@ function WriteLetters() {
           placeholderTextColor="grey"
           numberOfLines={10}
           multiline={true}
+          onChangeText={(text) => {
+            setNewPost(text);
+          }}
         />
       </View>
-      <Pressable style={styles.startButton} onPress={() => submitPost()}>
+      <Pressable style={styles.startButton} onPress={createPost}>
         <Text style={styles.startText}>send</Text>
       </Pressable>
     </SafeAreaView>
@@ -52,10 +70,6 @@ const styles = StyleSheet.create({
   header: {
     color: "#fff",
     fontSize: 26,
-    fontFamily: "NeonFuture",
-    textShadowColor: "rgba(255, 100, 200, 1)",
-    textShadowOffset: { width: 3, height: 3 },
-    textShadowRadius: 1,
     marginTop: 30,
     marginLeft: 20,
   },
@@ -90,7 +104,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: 10,
     padding: 10,
-    width: 300,
+    width: "80%",
   },
   textArea: {
     color: "#fff",
