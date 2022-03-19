@@ -9,14 +9,14 @@ import {
 } from "react-native";
 import { Card, Button, Input } from "react-native-elements";
 import { useAuthentication } from "../utils/hooks/useAuth";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 function WriteLetters() {
   const [newPost, setNewPost] = useState("");
   const [newRecipient, setNewRecipient] = useState("");
-  const { user } = useAuthentication();
   const collectionRef = collection(db, "posts");
+  const { user } = useAuthentication();
 
   const createPost = async () => {
     if (newRecipient.length > 0 && newPost.length > 14) {
@@ -24,6 +24,7 @@ function WriteLetters() {
         recipiant: newRecipient,
         letter: newPost,
         displayName: user.displayName,
+        userID: user.uid,
       });
     } else {
       alert("Enter a name and type at least 15 characters");
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     width: 350,
     display: "flex",
     alignItems: "flex-start",
-    backgroundColor: "rgba(255, 100, 200, 0.9)",
+    backgroundColor: "rgba(255, 100, 200, 1)",
     borderColor: "#000",
     borderWidth: 5,
   },
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     fontFamily: "JMHTypewriterBold",
+    fontSize: 19,
   },
   header2: {
     display: "flex",

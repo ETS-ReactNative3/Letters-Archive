@@ -25,7 +25,6 @@ function Login() {
     try {
       await signInWithEmailAndPassword(auth, value.email, value.password);
     } catch (error) {
-      console.log(error);
       setValue({
         ...value,
         error: error.message,

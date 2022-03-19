@@ -19,7 +19,7 @@ function UserStack() {
           component={Home}
           options={{
             tabBarIcon: () => (
-              <Icon name="home" size={33} color="rgba(215, 110, 210, 0.9)" />
+              <Icon name="home" size={32} color="rgba(215, 110, 210, 0.9)" />
             ),
           }}
         />
@@ -30,7 +30,7 @@ function UserStack() {
             tabBarIcon: () => (
               <Icon
                 name="envelope"
-                size={28}
+                size={27}
                 color="rgba(215, 110, 210, 0.9)"
               />
             ),
@@ -41,7 +41,7 @@ function UserStack() {
           component={Profile}
           options={{
             tabBarIcon: () => (
-              <Icon name="" size={28} color="rgba(215, 110, 210, 0.9)" />
+              <Icon name="user" size={27} color="rgba(215, 110, 210, 0.9)" />
             ),
           }}
         />

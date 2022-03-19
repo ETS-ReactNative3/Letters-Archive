@@ -1,28 +1,25 @@
 import { signOut } from "firebase/auth";
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
-import { useAuthentication } from "../utils/hooks/useAuth";
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
+import { Card, Button } from "react-native-elements";
 import { getAuth } from "firebase/auth";
 import { db } from "../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const auth = getAuth();
 
 function Profile() {
   const [userPosts, setUserPosts] = useState([]);
-  const { user } = useAuthentication();
-  const collectionRef = collection(db, "posts");
 
   useEffect(() => {
     const getUserPosts = async () => {
-      const data = await getDocs(collectionRef);
+      const q = query(
+        collection(db, "posts"),
+        where("userID", "==", auth.currentUser.uid)
+      );
+
+      const querySnapshot = await getDocs(q);
+      setUserPosts(querySnapshot.docs.map((doc) => ({ ...doc.data() })));
     };
 
     getUserPosts();
@@ -32,27 +29,27 @@ function Profile() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <Text style={styles.username}>User: {user?.displayName}</Text>
+          <Text style={styles.username}>
+            User: {auth.currentUser.displayName}
+          </Text>
 
-          <Pressable
-            style={styles.startButton}
+          <Button
+            buttonStyle={styles.button}
+            title="sign out"
+            titleStyle={styles.buttonTitle}
             onPress={() => {
               signOut(auth);
             }}
-          >
-            <Text style={styles.startText}>sign out</Text>
-          </Pressable>
+          />
         </View>
 
         <ScrollView style={styles.scroll}>
           {userPosts.map((post, key) => {
             return (
-              <View key={key} style={styles.notepad}>
+              <Card key={key} containerStyle={styles.notepad}>
                 <View style={styles.header2}>
-                  <Text style={styles.notepadHeader}>Message</Text>
-                  <View style={styles.cancel}>
-                    <Text style={styles.cancelText}>X</Text>
-                  </View>
+                  <Card.Title style={styles.notepadHeader}>Message</Card.Title>
+                  <Card.Title style={styles.notepadHeader2}>♡</Card.Title>
                 </View>
                 <View style={styles.center}>
                   <ScrollView style={styles.notepadTextContainer}>
@@ -61,12 +58,12 @@ function Profile() {
                     </Text>
                     <Text style={styles.notepadTextLetter}>{post.letter}</Text>
                     <Text style={styles.notepadFooter}>
-                      From:
+                      From:{" "}
                       <Text style={styles.senderName}>{post.displayName}</Text>
                     </Text>
                   </ScrollView>
                 </View>
-              </View>
+              </Card>
             );
           })}
         </ScrollView>
@@ -94,21 +91,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  startText: {
-    color: "#fff",
-    fontSize: 15,
-    fontFamily: "JMHTypewriter",
-  },
-  startButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 100, 200, 0.7)",
+  button: {
+    backgroundColor: "rgba(255, 100, 200, 0.9)",
     borderRadius: 20,
-    display: "flex",
-    justifyContent: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginTop: 10,
-    width: 100,
+    paddingVertical: 8,
+    marginTop: 20,
+    width: 110,
+  },
+  buttonTitle: {
+    fontFamily: "JMHTypewriterBold",
+    fontSize: 17,
   },
   username: {
     color: "#fff",
@@ -127,7 +119,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 100, 200, 0.9)",
     borderColor: "#000",
     borderWidth: 5,
-    height: 300,
+    height: 310,
+    marginBottom: 25,
     width: 350,
   },
   notepadHeader: {
@@ -137,12 +130,19 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 5,
   },
+  notepadHeader2: {
+    color: "#fff",
+    fontFamily: "NeonFuture",
+    fontSize: 32,
+    textShadowColor: "rgba(20, 10, 20, 1)",
+    textShadowOffset: { width: 3, height: 4 },
+    textShadowRadius: 1,
+  },
   notepadTextContainer: {
     backgroundColor: "rgba(255,192,203,255)",
     borderColor: "#000",
-    borderWidth: 5,
-    height: 220,
-    marginTop: 10,
+    borderWidth: 4.5,
+    height: 207,
     padding: 10,
     width: 310,
   },
@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "JMHTypewriter",
     marginTop: 20,
+    marginBottom: 25,
   },
   senderName: {
     color: "rgb(189, 19, 55)",
