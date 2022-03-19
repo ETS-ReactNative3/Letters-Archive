@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
-import { Input } from "react-native-elements";
+import { Button, Input } from "react-native-elements";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -78,9 +78,12 @@ function Signup({ navigation }) {
           </View>
         )}
 
-        <Pressable style={styles.startButton} onPress={signUpFields}>
-          <Text style={styles.startText}>sign up</Text>
-        </Pressable>
+        <Button
+          buttonStyle={styles.button}
+          title="sign up"
+          titleStyle={styles.buttonTitle}
+          onPress={signUpFields}
+        />
       </View>
     </SafeAreaView>
   );
@@ -103,21 +106,16 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
     marginBottom: 30,
   },
-  startText: {
-    color: "#fff",
-    fontSize: 16,
-    fontFamily: "JMHTypewriter",
-  },
-  startButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 100, 200, 0.7)",
+  button: {
+    backgroundColor: "rgba(255, 100, 200, 0.8)",
     borderRadius: 20,
-    display: "flex",
-    justifyContent: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 8,
     marginTop: 20,
-    width: 105,
+    width: 100,
+  },
+  buttonTitle: {
+    fontFamily: "JMHTypewriterBold",
+    fontSize: 18,
   },
   buttonsWrapper: {
     display: "flex",

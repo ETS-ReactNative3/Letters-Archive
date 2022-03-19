@@ -13,6 +13,7 @@ function Profile() {
 
   useEffect(() => {
     const getUserPosts = async () => {
+      // find docs that have same user id
       const q = query(
         collection(db, "posts"),
         where("userID", "==", auth.currentUser.uid)
@@ -92,15 +93,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   button: {
-    backgroundColor: "rgba(255, 100, 200, 0.9)",
+    backgroundColor: "rgba(255, 100, 200, 0.8)",
     borderRadius: 20,
     paddingVertical: 8,
     marginTop: 20,
-    width: 110,
+    width: 100,
   },
   buttonTitle: {
     fontFamily: "JMHTypewriterBold",
-    fontSize: 17,
+    fontSize: 18,
   },
   username: {
     color: "#fff",

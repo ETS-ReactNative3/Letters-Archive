@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "react-native-elements";
 
 function Welcome({ navigation }) {
+  // import fonts
   const [loaded] = useFonts({
     JMHTypewriter: require("../assets/fonts/JMHTypewriter.ttf"),
     JMHTypewriterBold: require("../assets/fonts/JMHTypewriterBold.ttf"),
@@ -15,24 +17,24 @@ function Welcome({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>unsaid feelings</Text>
+      <Text style={styles.header}>letters archive</Text>
       <View style={styles.buttonsWrapper}>
-        <Pressable
-          style={styles.startButton}
+        <Button
+          buttonStyle={styles.button}
+          title="login"
+          titleStyle={styles.buttonTitle}
           onPress={() => {
             navigation.navigate("Login");
           }}
-        >
-          <Text style={styles.startText}>login</Text>
-        </Pressable>
-        <Pressable
-          style={styles.startButton}
+        />
+        <Button
+          buttonStyle={styles.button}
+          title="sign up"
+          titleStyle={styles.buttonTitle}
           onPress={() => {
             navigation.navigate("Sign Up");
           }}
-        >
-          <Text style={styles.startText}>sign up</Text>
-        </Pressable>
+        />
       </View>
     </SafeAreaView>
   );
@@ -56,21 +58,16 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
     marginBottom: 30,
   },
-  startText: {
-    color: "#fff",
-    fontSize: 16,
-    fontFamily: "JMHTypewriter",
-  },
-  startButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 100, 200, 0.7)",
+  button: {
+    backgroundColor: "rgba(255, 100, 200, 0.8)",
     borderRadius: 20,
-    display: "flex",
-    justifyContent: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginTop: 25,
-    width: 105,
+    paddingVertical: 8,
+    marginTop: 20,
+    width: 100,
+  },
+  buttonTitle: {
+    fontFamily: "JMHTypewriterBold",
+    fontSize: 18,
   },
   buttonsWrapper: {
     display: "flex",

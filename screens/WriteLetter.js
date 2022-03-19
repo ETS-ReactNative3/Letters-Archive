@@ -169,11 +169,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 8,
     marginTop: 20,
-    width: 90,
+    width: 100,
   },
   buttonTitle: {
     fontFamily: "JMHTypewriterBold",
-    fontSize: 19,
+    fontSize: 18,
   },
   header2: {
     display: "flex",
