@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
 import WriteLetters from "../screens/WriteLetter";
+import Profile from "../screens/Profile";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -11,9 +13,38 @@ const Tab = createBottomTabNavigator();
 function UserStack() {
   const BottomNav = () => {
     return (
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Write" component={WriteLetters} />
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarIcon: () => (
+              <Icon name="home" size={33} color="rgba(215, 110, 210, 0.9)" />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Send"
+          component={WriteLetters}
+          options={{
+            tabBarIcon: () => (
+              <Icon
+                name="envelope"
+                size={28}
+                color="rgba(215, 110, 210, 0.9)"
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            tabBarIcon: () => (
+              <Icon name="" size={28} color="rgba(215, 110, 210, 0.9)" />
+            ),
+          }}
+        />
       </Tab.Navigator>
     );
   };

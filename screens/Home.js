@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
+import { Card } from "react-native-elements";
 import { db } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -24,17 +17,35 @@ function Home() {
     getPosts();
   }, []);
 
+  const generateColor = () => {
+    const R = Math.random() * 255;
+    const G = Math.random() * 100;
+    const B = Math.random() * 150;
+    return `rgb(${R},${G}, ${B} )`;
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scroll}>
-        {posts.map((post) => {
+        <View style={styles.header}>
+          <Text style={styles.username}>Home</Text>
+        </View>
+        {posts.map((post, key) => {
           return (
-            <View style={styles.notepad}>
-              <View style={styles.header}>
-                <Text style={styles.notepadHeader}>Message</Text>
-                <View style={styles.cancel}>
-                  <Text style={styles.cancelText}>X</Text>
-                </View>
+            <Card
+              key={key}
+              containerStyle={{
+                backgroundColor: generateColor(),
+                borderColor: "#000",
+                borderWidth: 5,
+                height: 310,
+                marginBottom: 25,
+                width: 350,
+              }}
+            >
+              <View style={styles.header2}>
+                <Card.Title style={styles.notepadHeader}>Message</Card.Title>
+                <Card.Title style={styles.notepadHeader2}>♡</Card.Title>
               </View>
               <View style={styles.center}>
                 <ScrollView style={styles.notepadTextContainer}>
@@ -42,9 +53,21 @@ function Home() {
                     To: <Text style={styles.name}>{post.recipiant}</Text>
                   </Text>
                   <Text style={styles.notepadTextLetter}>{post.letter}</Text>
+                  <Text style={styles.notepadFooter}>
+                    From:{" "}
+                    <Text
+                      style={{
+                        color: generateColor(),
+                        fontFamily: "JMHTypewriterBold",
+                        fontSize: 25,
+                      }}
+                    >
+                      {post.displayName}
+                    </Text>
+                  </Text>
                 </ScrollView>
               </View>
-            </View>
+            </Card>
           );
         })}
       </ScrollView>
@@ -58,58 +81,47 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
   },
-  scroll: {
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  cancel: {
-    backgroundColor: "rgb(230, 64, 64)",
-    marginRight: 15,
-    marginTop: 5,
-    paddingHorizontal: 5,
-    borderColor: "#000",
-    borderWidth: 3,
-  },
-  cancelText: {
-    fontFamily: "JMHTypewriterBold",
-    fontSize: 20,
-  },
   center: {
     alignItems: "center",
     display: "flex",
   },
   name: {
-    color: "rgb(230, 64, 64)",
+    color: "rgb(189, 19, 55)",
     fontFamily: "JMHTypewriterBold",
     fontSize: 25,
   },
   header: {
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "column",
+    marginTop: 20,
+    marginBottom: 20,
+    width: "100%",
+  },
+  header2: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  notepad: {
-    backgroundColor: "rgb(197, 144, 222)",
-    borderColor: "#000",
-    borderWidth: 5,
-    height: 300,
-    marginTop: 20,
-    width: 350,
-  },
   notepadHeader: {
     color: "#fff",
     fontSize: 27,
     fontFamily: "JMHTypewriterBold",
-    marginLeft: 15,
-    marginTop: 5,
+  },
+  notepadHeader2: {
+    color: "#fff",
+    fontFamily: "NeonFuture",
+    fontSize: 32,
+    textShadowColor: "rgba(20, 10, 20, 1)",
+    textShadowOffset: { width: 3, height: 4 },
+    textShadowRadius: 1,
   },
   notepadTextContainer: {
     backgroundColor: "rgba(255,192,203,255)",
     borderColor: "#000",
-    borderWidth: 5,
-    height: 220,
-    marginTop: 10,
+    borderWidth: 4.5,
+    height: 207,
     padding: 10,
     width: 310,
   },
@@ -121,6 +133,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "JMHTypewriter",
     marginTop: 10,
+  },
+  notepadFooter: {
+    fontSize: 20,
+    fontFamily: "JMHTypewriter",
+    marginTop: 25,
+    marginBottom: 25,
+  },
+  username: {
+    color: "#fff",
+    fontFamily: "NeonFuture",
+    fontSize: 30,
+    textShadowColor: "rgba(255, 100, 200, 1)",
+    textShadowOffset: { width: 3, height: 3 },
+    textShadowRadius: 1,
   },
 });
 
