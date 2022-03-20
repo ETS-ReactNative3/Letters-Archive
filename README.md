@@ -22,7 +22,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](images/mockup.png)
+![](mockup.png)
 
 ### Links
 
