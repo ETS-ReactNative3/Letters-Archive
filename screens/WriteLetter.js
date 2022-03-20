@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     width: 350,
     display: "flex",
     alignItems: "flex-start",
-    backgroundColor: "rgba(255, 100, 200, 1)",
+    backgroundColor: "rgba(255, 100, 200, 0.9)",
     borderColor: "#000",
     borderWidth: 5,
   },

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
     lineHeight: 90,
     textShadowColor: "rgba(255, 100, 200, 1)",
-    textShadowOffset: { width: 3, height: 5 },
+    textShadowOffset: { width: 5, height: 7 },
     textShadowRadius: 1,
     marginBottom: 30,
   },

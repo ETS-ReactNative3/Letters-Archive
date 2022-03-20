@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { Button, Input } from "react-native-elements";
 import {
   getAuth,
