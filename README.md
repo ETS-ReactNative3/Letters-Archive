@@ -6,6 +6,7 @@
   - [Links](#links)
 - [My process](#my-process)
   - [Technology](#technology)
+  - [Further Development](#futherdevelopment)
 
 ## Overview
 
@@ -37,3 +38,7 @@ Scan the QR code in the link to view the app in the Expo app on iOS,
 - React Native
 - React Native Elements
 - Firebase
+
+### Further Development
+
+I want to add a search input that will sort the posts by a specific name. I also want to sort the letters displayed on the Home page from most recent to oldest posts.
