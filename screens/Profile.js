@@ -30,9 +30,7 @@ function Profile() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <Text style={styles.username}>
-            User: {auth.currentUser.displayName}
-          </Text>
+          <Text style={styles.username}>{auth.currentUser.displayName}</Text>
 
           <Button
             buttonStyle={styles.button}
@@ -95,7 +93,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 100, 200, 0.8)",
     borderRadius: 20,
     paddingVertical: 8,
-    marginTop: 20,
+    marginTop: 5,
+    marginBottom: 10,
     width: 100,
   },
   buttonTitle: {
