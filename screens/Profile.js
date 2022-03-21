@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 27,
     fontFamily: "JMHTypewriterBold",
-    marginLeft: 15,
     marginTop: 5,
   },
   notepadHeader2: {
