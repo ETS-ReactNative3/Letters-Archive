@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
   },
   center: {
     alignItems: "center",
-    display: "flex",
   },
   name: {
     color: "rgb(189, 19, 55)",
@@ -99,7 +98,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   header2: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

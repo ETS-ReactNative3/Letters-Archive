@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
   card: {
     height: 450,
     width: 350,
-    display: "flex",
     alignItems: "flex-start",
     backgroundColor: "rgba(255, 100, 200, 0.9)",
     borderColor: "#000",
@@ -131,7 +130,6 @@ const styles = StyleSheet.create({
     width: 310,
   },
   notepadHeader: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
   },
@@ -176,7 +174,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   header2: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

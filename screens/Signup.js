@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   buttonsWrapper: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: "75%",
@@ -134,7 +133,6 @@ const styles = StyleSheet.create({
   },
   form: {
     alignItems: "center",
-    display: "flex",
     justifyContent: "center",
     paddingBottom: 80,
   },
