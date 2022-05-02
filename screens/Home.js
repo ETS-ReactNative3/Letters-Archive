@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
   },
+  center: {
+    alignItems: "center",
+  },
   name: {
     color: "rgb(189, 19, 55)",
     fontFamily: "JMHTypewriterBold",
