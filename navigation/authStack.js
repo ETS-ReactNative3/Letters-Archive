@@ -10,15 +10,17 @@ const Stack = createStackNavigator();
 
 function AuthStack() {
   const screenOptions = {
+    headerTransparent: true,
     headerBackImage: () => (
       <Icon
         name="hand-o-left"
         color="#fff"
         size={27}
         style={{
+          color: "rgba(214, 58, 125, 0.5)",
           marginHorizontal: 20,
-          textShadowColor: "rgba(255, 100, 200, 1)",
-          textShadowOffset: { width: 2, height: 2 },
+          textShadowColor: "rgba(214, 58, 125, 1)",
+          textShadowOffset: { width: 3, height: 3 },
           textShadowRadius: 1,
         }}
       />

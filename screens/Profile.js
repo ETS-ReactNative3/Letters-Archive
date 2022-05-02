@@ -159,11 +159,12 @@ const styles = StyleSheet.create({
   notepadText: {
     fontSize: 20,
     fontFamily: "JMHTypewriter",
+    marginBottom: 20,
   },
   notepadTextLetter: {
     fontSize: 18,
     fontFamily: "JMHTypewriterBold",
-    paddingBottom: 20,
+    paddingBottom: 25,
   },
   notepadFooter: {
     fontSize: 18,

@@ -113,7 +113,7 @@ function Home() {
                   <Icon
                     name="thumbs-up"
                     size={25}
-                    color="#fff"
+                    color="#FF7F50"
                     onPress={() => {
                       const postRef = doc(db, "posts", post.id);
                       !likeState
@@ -121,14 +121,15 @@ function Home() {
                             likeCount: increment(1),
                           })
                         : null;
-                      setLikeState(!likeState);
+                      setLikeState(true);
+                      setDisikeState(false);
                     }}
                   />
                   <Text style={styles.likeCount}>{post.likeCount}</Text>
                   <Icon
                     name="thumbs-down"
                     size={25}
-                    color="#fff"
+                    color="#FF7F50"
                     onPress={() => {
                       const postRef = doc(db, "posts", post.id);
                       !dislikeState
@@ -136,7 +137,8 @@ function Home() {
                             likeCount: increment(-1),
                           })
                         : null;
-                      setDisikeState(!dislikeState);
+                      setDisikeState(true);
+                      setLikeState(false);
                     }}
                   />
                 </View>
@@ -226,7 +228,7 @@ const styles = StyleSheet.create({
   },
   likeCount: {
     fontFamily: "JMHTypewriterBold",
-    color: "#ffffff",
+    color: "#FF7F50",
     fontSize: 16,
     marginRight: 5,
   },
