@@ -21,7 +21,9 @@ Users should be able to:
 - View all letters on Home page and user Profile page
 - Log out
 
-### Screenshot
+### Slide Deck
+
+[Slide Deck](https://www.canva.com/design/DAE_qxYuIcI/kBe4lgB7IG6FUqFiTJTmYQ/edit?utm_content=DAE_qxYuIcI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ### Links
 
