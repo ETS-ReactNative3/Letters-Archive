@@ -1,9 +1,10 @@
 # Letters Archive
 
 - [Overview](#overview)
+
   - [Features](#features)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [Slide Deck](#slide-deck)
+
 - [My process](#my-process)
   - [Technology](#technology)
   - [Further Development](#futherdevelopment)
@@ -25,13 +26,7 @@ Users should be able to:
 
 [Slide Deck](https://www.canva.com/design/DAE_qxYuIcI/kBe4lgB7IG6FUqFiTJTmYQ/edit?utm_content=DAE_qxYuIcI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-### Links
-
-Scan the QR code in the link to view the app in the Expo app on iOS,
-
-- Live Site URL: [https://expo.dev/@mw3981/midterm](https://expo.dev/@mw3981/midterm)
-
-## My process
+## My Process
 
 ### Technology
 
